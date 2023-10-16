@@ -20,9 +20,9 @@ import { useState } from "react";
 import axios from "axios";
 
 function PhoneBook() {
-  const [contactData, setContactData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [modal, setModal] = useState(false);
-
+  const [contactData, setContactData] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     emails: "",
@@ -42,11 +42,7 @@ function PhoneBook() {
     const emailList = formData.emails.split(",");
     const phoneNumberList = formData.phoneNumbers.split(",");
     e.preventDefault();
-    console.log({
-      ...formData,
-      phoneNumberList: phoneNumberList,
-      emailList: emailList,
-    });
+
     const apiUrl = "/api/v1/contact/";
     await axios
       .post(apiUrl, {
@@ -57,6 +53,7 @@ function PhoneBook() {
       .then((response) => {
         // Handle the response as needed
         console.log("Data added:", response.data);
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error adding data:", error);
@@ -134,8 +131,15 @@ function PhoneBook() {
               </Modal>
             </div>
           </Col>
-          <Search contactData={contactData} setContactData={setContactData} />
+          <Search
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            contactData={contactData}
+            setContactData={setContactData}
+          />
           <PhoneContactsList
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
             contactData={contactData}
             setContactData={setContactData}
           />

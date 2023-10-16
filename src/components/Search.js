@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Input } from "reactstrap";
 
-const Search = ({ contactData, setContactData }) => {
+const Search = ({
+  filteredData,
+  setFilteredData,
+  contactData,
+  setContactData,
+}) => {
   const [searchValue, setSearchValue] = useState("");
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
@@ -18,7 +23,7 @@ const Search = ({ contactData, setContactData }) => {
       );
     });
 
-    setContactData(res);
+    setFilteredData(res);
   };
 
   return (

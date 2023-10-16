@@ -32,17 +32,24 @@ const Contacts = [
   },
 ];
 
-const PhoneContactsList = ({ contactData, setContactData }) => {
+const PhoneContactsList = ({
+  filteredData,
+  setFilteredData,
+  contactData,
+  setContactData,
+}) => {
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     (async () => {
       const res = await axios.get("/api/v1/contact");
+      setFilteredData(res.data.data);
       setContactData(res.data.data);
       setLoading(false);
     })();
   }, []);
-
-  let results = contactData.map((contact, i) => {
+  console.log(filteredData);
+  let results = filteredData?.map((contact, i) => {
     return (
       <PhoneContact
         name={contact.name}
