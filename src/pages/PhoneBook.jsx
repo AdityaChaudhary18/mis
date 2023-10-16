@@ -51,7 +51,6 @@ function PhoneBook() {
         emailList: emailList,
       })
       .then((response) => {
-        // Handle the response as needed
         console.log("Data added:", response.data);
         window.location.reload();
       })

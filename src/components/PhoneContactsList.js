@@ -1,36 +1,7 @@
-// PhoneContactsList.js
 import React, { useEffect, useState } from "react";
 import { ListGroup } from "reactstrap";
-import PropTypes from "prop-types";
 import PhoneContact from "./PhoneContact";
 import axios from "axios";
-
-const Contacts = [
-  {
-    name: "Aditya",
-    phoneNumber: "9999977777",
-    email: "san@gmail.com",
-    dob: "18-08-2002",
-  },
-  {
-    name: "Naman",
-    phoneNumber: "9999972222",
-    email: "san@gmail.com",
-    dob: "18-08-2002",
-  },
-  {
-    name: "Avi",
-    phoneNumber: "345355335",
-    email: "san@gmail.com",
-    dob: "18-08-2002",
-  },
-  {
-    name: "Vansh",
-    phoneNumber: "23456431",
-    email: "san@gmail.com",
-    dob: "18-08-2002",
-  },
-];
 
 const PhoneContactsList = ({
   filteredData,

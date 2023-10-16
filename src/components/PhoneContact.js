@@ -20,9 +20,6 @@ const PhoneContact = (props) => {
   };
   const handleDelete = async (itemId) => {
     const apiUrl = `/api/v1/contact/delete/${itemId}`;
-
-    //  const dataToDelete = { itemId };
-
     const res = await axios.post(apiUrl).then(window.location.reload());
   };
 

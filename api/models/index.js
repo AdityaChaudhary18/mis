@@ -2,8 +2,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 
 const sequelize = new Sequelize("mis", "root", "ayush26", {
   host: "localhost",
-  dialect:
-    "mysql" /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */,
+  dialect: "mysql",
   logging: false,
 });
 try {
