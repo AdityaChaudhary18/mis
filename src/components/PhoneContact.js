@@ -25,12 +25,11 @@ const PhoneContact = (props) => {
 
   const updateContact = async (formData, prop) => {
     const apiUrl = `/api/v1/contact/update/${props.id}`;
-
     const res = await axios
       .post(apiUrl, {
         name: formData.name,
-        phoneNumberList: formData.phoneNumber,
-        emailList: formData.email,
+        phoneNumberList: formData.phoneNumbers.split(","),
+        emailList: formData.emails.split(","),
         dob: formData.dob,
       })
       .then(window.location.reload());
