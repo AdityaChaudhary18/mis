@@ -32,8 +32,7 @@ const Contacts = [
   },
 ];
 
-const PhoneContactsList = () => {
-  const [contactData, setContactData] = useState([]);
+const PhoneContactsList = ({ contactData, setContactData }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     (async () => {
@@ -44,8 +43,6 @@ const PhoneContactsList = () => {
   }, []);
 
   let results = contactData.map((contact, i) => {
-    console.log(`ID Main:${contact.id}`);
-
     return (
       <PhoneContact
         name={contact.name}

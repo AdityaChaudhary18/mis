@@ -20,6 +20,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function PhoneBook() {
+  const [contactData, setContactData] = useState([]);
   const [modal, setModal] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -133,8 +134,11 @@ function PhoneBook() {
               </Modal>
             </div>
           </Col>
-          <Search />
-          <PhoneContactsList />
+          <Search contactData={contactData} setContactData={setContactData} />
+          <PhoneContactsList
+            contactData={contactData}
+            setContactData={setContactData}
+          />
         </Row>
       </Container>
     </Container>

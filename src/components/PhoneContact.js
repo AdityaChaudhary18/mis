@@ -24,17 +24,10 @@ const PhoneContact = (props) => {
     //  const dataToDelete = { itemId };
 
     const res = await axios.post(apiUrl);
-    console.log(res.data);
   };
 
   const updateContact = async (formData, prop) => {
     const apiUrl = `/api/v1/contact/update/${props.id}`;
-    // console.log({
-    //   name: formData.name,
-    //   phoneNumberList: formData.phoneNumber,
-    //   emailList: formData.email,
-    //   dob: formData.dob,
-    // });
 
     const res = await axios.post(apiUrl, {
       name: formData.name,
@@ -42,7 +35,6 @@ const PhoneContact = (props) => {
       emailList: formData.email,
       dob: formData.dob,
     });
-    console.log(res);
   };
 
   const [formData, setFormData] = useState({
@@ -51,8 +43,6 @@ const PhoneContact = (props) => {
     phoneNumbers: props.phoneNumber.join(","),
     dob: props.dob,
   });
-  console.log(formData);
-  console.log(props);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
