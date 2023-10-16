@@ -33,9 +33,14 @@ body {
   margin-top: 44px;
 }
 
+.update-contact {
+  float: right;
+  margin-top: 10px;
+}
 .remove-contact {
   float: right;
   margin-top: 10px;
+  margin-right: 10px;
 }
 
 .contact-name-surname {

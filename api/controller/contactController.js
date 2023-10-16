@@ -58,17 +58,12 @@ exports.deleteContact = async (req, res) => {
 exports.updateContact = async (req, res) => {
   try {
     const { name, phoneNumberList, emailList, dob } = req.body;
+    const data = { name, phoneNumberList, emailList, dob };
     const contactId = req.params.id;
-
-    const updatedContact = await Contact.findByIdAndUpdate(
-      contactId,
-      {
-        name,
-        phoneNumberList,
-        emailList,
-        dob,
-      },
-      { new: true } // to return the updated contact
+    console.log(data);
+    const updatedContact = await Contact.update(
+      { data },
+      { where: { id: Number(contactId) } }
     );
 
     if (!updatedContact) {

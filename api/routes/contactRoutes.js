@@ -11,5 +11,5 @@ const router = express.Router();
 router.get("/", fetchAllContacts);
 router.post("/", createContact);
 router.post("/delete/:id", deleteContact);
-router.post("/update", updateContact);
+router.post("/update/:id", updateContact);
 module.exports = router;
