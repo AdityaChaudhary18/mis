@@ -53,8 +53,23 @@ const PhoneContact = (props) => {
       <div className="contact-name-surname">
         <h4>{props.name}</h4>
         <i className="fa fa-phone" aria-hidden="true"></i>
-        <h6 className="contact-number">{props.phoneNumber}</h6>
-        <h6 className="contact-number">{props.email}</h6>
+        <h6 style={{ color: "black" }}>
+          <b>Phone Number: </b>
+        </h6>
+        {props.phoneNumber.map((e) => {
+          return <h6>{e}</h6>;
+        })}
+        <h6 style={{ color: "black" }}>
+          <b>Email Address: </b>
+        </h6>
+        {props.email.map((e) => {
+          return <h6>{e}</h6>;
+        })}
+        {props.dob && (
+          <h6 style={{ color: "black" }}>
+            <b>Date of Birth: </b>
+          </h6>
+        )}
         <h6 className="contact-number">{props.dob}</h6>
       </div>
       <Modal isOpen={modal} toggle={toggle}>
