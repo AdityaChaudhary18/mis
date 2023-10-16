@@ -61,10 +61,9 @@ exports.updateContact = async (req, res) => {
     const data = { name, phoneNumberList, emailList, dob };
     const contactId = req.params.id;
     console.log(data);
-    const updatedContact = await Contact.update(
-      { data },
-      { where: { id: Number(contactId) } }
-    );
+    const updatedContact = await Contact.update(data, {
+      where: { id: Number(contactId) },
+    });
 
     if (!updatedContact) {
       return notFoundResponse(res, "Contact not found");

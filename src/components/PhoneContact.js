@@ -29,6 +29,12 @@ const PhoneContact = (props) => {
 
   const updateContact = async (formData, prop) => {
     const apiUrl = `/api/v1/contact/update/${props.id}`;
+    // console.log({
+    //   name: formData.name,
+    //   phoneNumberList: formData.phoneNumber,
+    //   emailList: formData.email,
+    //   dob: formData.dob,
+    // });
 
     const res = await axios.post(apiUrl, {
       name: formData.name,
@@ -41,10 +47,12 @@ const PhoneContact = (props) => {
 
   const [formData, setFormData] = useState({
     name: props.name,
-    emails: props.email,
-    phoneNumbers: props.phoneNumber,
+    emails: props.email.join(","),
+    phoneNumbers: props.phoneNumber.join(","),
     dob: props.dob,
   });
+  console.log(formData);
+  console.log(props);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -78,7 +86,7 @@ const PhoneContact = (props) => {
                 type="text"
                 className="contact-data"
                 name="emails"
-                value={formData.email}
+                value={formData.emails}
                 onChange={handleInputChange}
                 placeholder="Email (Seperate multiple by comma's)"
                 autoComplete="none"
@@ -87,7 +95,7 @@ const PhoneContact = (props) => {
                 type="text"
                 className="contact-data"
                 name="phoneNumbers"
-                value={formData.phoneNumber}
+                value={formData.phoneNumbers}
                 onChange={handleInputChange}
                 placeholder="Phone Number (Seperate multiple by comma's)"
               />
