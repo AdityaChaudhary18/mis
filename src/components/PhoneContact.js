@@ -14,7 +14,6 @@ import {
   Input,
 } from "reactstrap";
 const PhoneContact = (props) => {
-  console.log(props.id);
   const [modal, setModal] = useState(false);
   const toggle = () => {
     setModal(!modal);
@@ -31,13 +30,19 @@ const PhoneContact = (props) => {
   const updateContact = async (formData, prop) => {
     const apiUrl = `/api/v1/contact/update/${props.id}`;
 
-    const res = await axios.post(apiUrl);
+    const res = await axios.post(apiUrl, {
+      name: formData.name,
+      phoneNumberList: formData.phoneNumber,
+      emailList: formData.email,
+      dob: formData.dob,
+    });
+    console.log(res);
   };
 
   const [formData, setFormData] = useState({
     name: props.name,
-    emails: props.emailList,
-    phoneNumbers: props.phoneNumberList,
+    emails: props.email,
+    phoneNumbers: props.phoneNumber,
     dob: props.dob,
   });
 
